@@ -8,7 +8,7 @@ class NetManager():
     # 搜索
     def searchmusic(self,musicname,pageno):
         url = "http://y.webzcz.cn/api.php"
-        para = {"types": "search", "count": 20, "source": "netease", "pages": pageno, "name": musicname}
+        para = {"types": "search", "count": 10, "source": "netease", "pages": pageno, "name": musicname}
         musics = requests.post(url, data=para).json()
         musicslist = list()
         for musicDic in musics:
