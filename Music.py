@@ -11,7 +11,6 @@ class Music():
         # self.url_id = url_id
         # self.lyric_id = lyric_id
         # self.source = source
-
         self.id = dic["id"]
         self.name = dic["name"]
         self.artist = dic["artist"]
