@@ -37,6 +37,7 @@ def packageProject(projectname):
 
     os.system(archiveSimulator)
     os.system(archiveiPoneos)
+    # 移除不需要打包文件
     os.system(
         "rm -rf archives/" + projectname + ".framework-" + "iphones.xcarchive/Products/Library/Frameworks/" + projectname + ".framework/_CodeSignature")
     os.system(
