@@ -34,8 +34,34 @@ def packageProject(projectname):
                          + "-framework \'archives/"+projectname+".framework-iphones.xcarchive/Products/Library/Frameworks/"+projectname +".framework\' "\
                          +"-framework \'archives/"+projectname+".framework-iphonesimulator.xcarchive/Products/Library/Frameworks/"+projectname +".framework\' "\
                          +"-output " +"release/"+projectname+ ".xcframework"
+
     os.system(archiveSimulator)
     os.system(archiveiPoneos)
+    os.system(
+        "rm -rf archives/" + projectname + ".framework-" + "iphones.xcarchive/Products/Library/Frameworks/" + projectname + ".framework/_CodeSignature")
+    os.system(
+        "rm -rf archives/" + projectname + ".framework-" + "iphones.xcarchive/Products/Library/Frameworks/" + projectname + ".framework/Modules")
+    os.system(
+        "rm -rf archives/" + projectname + ".framework-" + "iphones.xcarchive/Products/Library/Frameworks/" + projectname + ".framework/Info.plist")
+    os.system(
+        "rm -rf archives/" + projectname + ".framework-" + "iphones.xcarchive/Products/Library/Frameworks/" + projectname + ".framework/PrivateHeaders")
+    os.system(
+        "rm -rf archives/" + projectname + ".framework-" + "iphones.xcarchive/Products/Library/Frameworks/" + projectname + ".framework/_CodeSignature")
+    os.system(
+        "rm -rf archives/" + projectname + ".framework-" + "iphones.xcarchive/Products/Library/Frameworks/" + projectname + ".framework/*.bundle")
+
+    os.system(
+        "rm -rf archives/" + projectname + ".framework-" + "iphonesimulator.xcarchive/Products/Library/Frameworks/" + projectname + ".framework/_CodeSignature")
+    os.system(
+        "rm -rf archives/" + projectname + ".framework-" + "iphonesimulator.xcarchive/Products/Library/Frameworks/" + projectname + ".framework/Modules")
+    os.system(
+        "rm -rf archives/" + projectname + ".framework-" + "iphonesimulator.xcarchive/Products/Library/Frameworks/" + projectname + ".framework/Info.plist")
+    os.system(
+        "rm -rf archives/" + projectname + ".framework-" + "iphonesimulator.xcarchive/Products/Library/Frameworks/" + projectname + ".framework/PrivateHeaders")
+    os.system(
+        "rm -rf archives/" + projectname + ".framework-" + "iphonesimulator.xcarchive/Products/Library/Frameworks/" + projectname + ".framework/_CodeSignature")
+    os.system(
+        "rm -rf archives/" + projectname + ".framework-" + "iphonesimulator.xcarchive/Products/Library/Frameworks/" + projectname + ".framework/*.bundle")
     os.system(outPutXcframework)
 
-packageProject("ADSuyiBaidu")
+packageProject("ADSuyiSDK")
