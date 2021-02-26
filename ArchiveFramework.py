@@ -4,20 +4,6 @@ import os
 import subprocess
 
 def packageProject(projectname):
-    # 判断是否存在存储路径 并清空上次打包
-    os.chdir("/Users/jishu/Desktop/ADSuyiDev")
-    if not os.path.exists("archives/"):
-        os.makedirs("archives/")
-    archivesFiles = os.listdir("archives/")
-    for file in archivesFiles:
-        os.system("rm -rf archives/"+file)
-    if not os.path.exists("release/"):
-        os.makedirs("release/")
-    releaseFiles = os.listdir("release/")
-    for file in releaseFiles:
-        os.system("rm -rf release/"+file)
-        # os.remove("release/"+file)
-    # os.chdir("/Users/erik/Desktop/SuyiSDK/ADSuyiCode/adsuyibu")
     # 打包archive
     archiveSimulator = "xcodebuild archive "+ "-workspace ADSuyiDev.xcworkspace"\
                        + " -scheme " + projectname\
@@ -37,7 +23,7 @@ def packageProject(projectname):
 
     os.system(archiveSimulator)
     os.system(archiveiPoneos)
-    # 移除不需要打包文件
+    # 移除打包框架中不需要的文件
     os.system(
         "rm -rf archives/" + projectname + ".framework-" + "iphones.xcarchive/Products/Library/Frameworks/" + projectname + ".framework/_CodeSignature")
     os.system(
@@ -50,7 +36,6 @@ def packageProject(projectname):
         "rm -rf archives/" + projectname + ".framework-" + "iphones.xcarchive/Products/Library/Frameworks/" + projectname + ".framework/_CodeSignature")
     os.system(
         "rm -rf archives/" + projectname + ".framework-" + "iphones.xcarchive/Products/Library/Frameworks/" + projectname + ".framework/*.bundle")
-
     os.system(
         "rm -rf archives/" + projectname + ".framework-" + "iphonesimulator.xcarchive/Products/Library/Frameworks/" + projectname + ".framework/_CodeSignature")
     os.system(
@@ -65,4 +50,18 @@ def packageProject(projectname):
         "rm -rf archives/" + projectname + ".framework-" + "iphonesimulator.xcarchive/Products/Library/Frameworks/" + projectname + ".framework/*.bundle")
     os.system(outPutXcframework)
 
+# 判断是否存在存储路径 并清空上次打包 批量打包只需清除一次
+os.chdir("/Users/jishu/Desktop/ADSuyiDev")
+if not os.path.exists("archives/"):
+    os.makedirs("archives/")
+archivesFiles = os.listdir("archives/")
+for file in archivesFiles:
+    os.system("rm -rf archives/"+file)
+if not os.path.exists("release/"):
+    os.makedirs("release/")
+releaseFiles = os.listdir("release/")
+for file in releaseFiles:
+    os.system("rm -rf release/"+file)
 packageProject("ADSuyiSDK")
+packageProject("ADSuyiNetWork")
+
